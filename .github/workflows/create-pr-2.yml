@@ -1,0 +1,17 @@
+name: Create PR 2
+
+on:
+  # push:
+  #   branches:
+  #     - main
+  workflow_dispatch:
+
+jobs:
+  create_pr:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Create pull request
+      env:
+        GH_TOKEN: ${{ secrets.A_GITHUB_SECRET }}
+      run: |
+        gh pr create --title "Update file" --body "This is a pull request" --head release/v1.0.1 --base main

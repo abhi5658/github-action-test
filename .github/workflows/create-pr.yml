@@ -34,8 +34,17 @@ jobs:
         # git commit -m "Update file"
         # git push --set-upstream origin new-branch
 
+    - name: Set up GitHub CLI
+      uses: actions/setup-cli@v1
+      with:
+        gh-version: 2.0.0
+        gh-platform: linux
+        gh-architecture: amd64
+      env:
+        GITHUB_TOKEN: ${{ secrets.A_GITHUB_SECRET }}
+
     - name: Create pull request
       env:
-        GH_TOKEN: ${{ github.token }}
+        GH_TOKEN: ${{ secrets.A_GITHUB_SECRET }}
       run: |
         gh pr create --title "Update file" --body "This is a pull request" --head release/v1.0.1 --base main
