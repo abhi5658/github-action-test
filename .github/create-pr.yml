@@ -1,0 +1,38 @@
+name: Create PR
+
+on:
+  # push:
+  #   branches:
+  #     - main
+  workflow_dispatch:
+
+jobs:
+  create_pr:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install GitHub CLI
+      uses: actions/setup-node@v2.1.2
+      with:
+        node-version: '14'
+      run: |
+        npm install -g github-cli
+
+    # - name: Make changes
+    #   run: |
+    #     sed -i 's/old-text/new-text/g' file.txt
+
+    - name: Create new branch
+      run: |
+        git fetch
+        git checkout -b release/v1.0.1
+        # git add .
+        # git commit -m "Update file"
+        # git push --set-upstream origin new-branch
+
+    - name: Create pull request
+      run: |
+        gh pr create --title "Update file" --body "This is a pull request" --head release/v1.0.1 --base main
