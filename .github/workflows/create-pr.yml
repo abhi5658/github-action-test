@@ -35,5 +35,7 @@ jobs:
         # git push --set-upstream origin new-branch
 
     - name: Create pull request
+      env:
+        GH_TOKEN: ${{ github.token }}
       run: |
         gh pr create --title "Update file" --body "This is a pull request" --head release/v1.0.1 --base main
