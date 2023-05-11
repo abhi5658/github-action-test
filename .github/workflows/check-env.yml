@@ -1,0 +1,17 @@
+name: Check ENV
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check-the-env:
+    runs-on: ubuntu-latest
+    environment: env1
+    steps:
+    - name: echo env
+      env:
+        A_SECRET: ${{ secrets.A_SECRET }}
+        A_ENV_VAR: ${{ vars.A_ENV_VAR }}
+      run: |
+        echo $A_SECRET
+        echo $A_ENV_VAR
