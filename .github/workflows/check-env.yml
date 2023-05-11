@@ -8,24 +8,28 @@ jobs:
     runs-on: ubuntu-latest
     environment: env1
     steps:
-    - name: echo env
-      env:
-        A_SECRET: ${{ secrets.A_SECRET }}
-        A_ENV_VAR: ${{ vars.A_ENV_VAR }}
-      run: |
-        echo $A_SECRET
-        echo $A_ENV_VAR
+      - uses: actions/checkout@v3
+      - uses: ./.github/workflows/reusable.yml
+        env:
+          SECRET_ABC: ${{ secrets.A_SECRET }}
 
-    - uses: actions/checkout@v3
+    # - name: echo env
+    #   env:
+    #     A_SECRET: ${{ secrets.A_SECRET }}
+    #     A_ENV_VAR: ${{ vars.A_ENV_VAR }}
+    #   run: |
+    #     echo $A_SECRET
+    #     echo $A_ENV_VAR
+
 
     # install node
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 18
-        cache: 'npm'
+    # - uses: actions/setup-node@v3
+    #   with:
+    #     node-version: 18
+    #     cache: 'npm'
 
-    - run: export ABC=5
-    - run: echo $ABC
-    - run: |
-        export XYZ=10
-        echo $XYZ
+    # - run: export ABC=5
+    # - run: echo $ABC
+    # - run: |
+    #     export XYZ=10
+    #     echo $XYZ

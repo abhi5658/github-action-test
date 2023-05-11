@@ -1,0 +1,12 @@
+name: Reusable
+
+on:
+  workflow_call:
+
+
+jobs:
+  common-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo $SECRET_ABC
