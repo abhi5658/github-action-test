@@ -26,3 +26,6 @@ jobs:
 
     - run: export ABC=5
     - run: echo $ABC
+    - run: |
+        export XYZ=10
+        echo $XYZ
