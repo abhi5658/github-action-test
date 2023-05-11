@@ -15,3 +15,14 @@ jobs:
       run: |
         echo $A_SECRET
         echo $A_ENV_VAR
+
+    - uses: actions/checkout@v3
+
+    # install node
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        cache: 'npm'
+
+    - run: export ABC=5
+    - run: echo $ABC
