@@ -1,4 +1,5 @@
 name: Check ENV
+run-name: 1. ${{ github.head_ref }} 2. ${{ github.ref }} 3. ${{ github.ref_name }} 4. ${{ github.sha }} is running
 
 on:
   workflow_dispatch:
@@ -8,28 +9,24 @@ jobs:
     runs-on: ubuntu-latest
     environment: env1
     steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/workflows/reusable.yml
-        env:
-          SECRET_ABC: ${{ secrets.A_SECRET }}
+    - name: echo env
+      env:
+        A_SECRET: ${{ secrets.A_SECRET }}
+        A_ENV_VAR: ${{ vars.A_ENV_VAR }}
+      run: |
+        echo $A_SECRET
+        echo $A_ENV_VAR
 
-    # - name: echo env
-    #   env:
-    #     A_SECRET: ${{ secrets.A_SECRET }}
-    #     A_ENV_VAR: ${{ vars.A_ENV_VAR }}
-    #   run: |
-    #     echo $A_SECRET
-    #     echo $A_ENV_VAR
-
+    - uses: actions/checkout@v3
 
     # install node
-    # - uses: actions/setup-node@v3
-    #   with:
-    #     node-version: 18
-    #     cache: 'npm'
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        cache: 'npm'
 
-    # - run: export ABC=5
-    # - run: echo $ABC
-    # - run: |
-    #     export XYZ=10
-    #     echo $XYZ
+    - run: export ABC=5
+    - run: echo $ABC
+    - run: |
+        export XYZ=10
+        echo $XYZ
