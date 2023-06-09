@@ -3,6 +3,7 @@ run-name: 1. ${{ github.head_ref }} 2. ${{ github.ref }} 3. ${{ github.ref_name 
 
 on:
   workflow_dispatch:
+  push:
 
 jobs:
   check-the-env:
@@ -33,6 +34,6 @@ jobs:
     - name: Generate Error Annotations
       run: |
         text="This is an Error"
-        echo "::error file=app.js,line=10,col=15::$text"
-        echo "::notice ::Please execute the changeset manually"
-        echo "::warning ::Please execute the changeset manually"
+        echo "::error file=app.js,line=10,col=15,title=the error title::$text"
+        echo "::notice title=the notice title::Please execute the changeset manually"
+        echo "::warning title=the warning title::Please execute the changeset manually"
