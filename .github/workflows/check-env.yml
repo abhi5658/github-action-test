@@ -40,3 +40,8 @@ jobs:
         echo "::error file=app.js,line=10,col=15,title=the error title::$info_text"
         echo "::notice title=the notice title::Please execute the changeset manually"
         echo "::warning title=the warning title::$info-warn"
+    - name: Generate Annotation message 2
+      run: |
+        message="Only a cloudformation changeset was created. \
+        Please execute the changeset manually from the AWS Console"
+        echo "::warning title=Lambda Deployment::$message"
