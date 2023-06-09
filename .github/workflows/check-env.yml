@@ -33,7 +33,9 @@ jobs:
         echo $XYZ
     - name: Generate Error Annotations
       run: |
-        text="This is an Error"
+        text="This is an Error \
+        sdkjfhss \
+        iuhdfiubiurbeiub"
         echo "::error file=app.js,line=10,col=15,title=the error title::$text"
         echo "::notice title=the notice title::Please execute the changeset manually"
         echo "::warning title=the warning title::Please execute the changeset manually"
