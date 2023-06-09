@@ -36,10 +36,10 @@ jobs:
         info_text="This is an Error\n \
         sdkjfhss\n \
         iuhdfiubiurbeiub"
-        info-warn="Please execute the changeset manually info"
+        info_warn="Please execute the changeset manually info"
         echo "::error file=app.js,line=10,col=15,title=the error title::$info_text"
         echo "::notice title=the notice title::Please execute the changeset manually"
-        echo "::warning title=the warning title::$info-warn"
+        echo "::warning title=the warning title::$info_warn"
     - name: Generate Annotation message 2
       run: |
         message="Only a cloudformation changeset was created. \
