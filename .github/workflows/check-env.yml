@@ -30,3 +30,9 @@ jobs:
     - run: |
         export XYZ=10
         echo $XYZ
+    - name: Generate Error Annotations
+      run: |
+        text="This is an Error"
+        echo "::error file=app.js,line=10,col=15::$text"
+        echo "::notice ::Please execute the changeset manually"
+        echo "::warning ::Please execute the changeset manually"
